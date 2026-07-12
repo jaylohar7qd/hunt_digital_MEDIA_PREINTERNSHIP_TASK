@@ -20,17 +20,7 @@ Route::get('login/{driver}/start', [App\Http\Controllers\Caller\LoginController:
 Route::any('login/{driver}/callback', [App\Http\Controllers\Caller\LoginController::class, 'handleProviderCallback']);
 Route::any('logout', [App\Http\Controllers\Caller\LoginController::class, 'Logout']);
 
-Route::get('/html-page', function () {
-	$templatePath = 'C:/Users/DELL/Downloads/template-html/template-html/html/vertical-menu-template/app-calendar.html';
-	abort_unless(is_file($templatePath), 404);
-
-	$html = file_get_contents($templatePath);
-	$assetBase = asset('assets');
-
-	$html = str_replace('../../assets', $assetBase, $html);
-
-	return response($html);
-})->name('html-page');
+Route::view('/html-page', 'calendar.app-calendar')->name('html-page');
 
 Route::middleware(['auth:web'])->group(function () {
 });

@@ -1,0 +1,12 @@
+node_modules
+tests
+.env.local
+.env.*.local
+.git
+.gitignore
+README.md
+storage/logs/*
+bootstrap/cache/*
+__pycache__
+selenium_*.py
+.venv

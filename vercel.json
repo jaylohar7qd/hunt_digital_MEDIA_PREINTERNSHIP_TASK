@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "buildCommand": "composer install && npm run build",
+  "framework": null,
+  "public": "public",
+  "functions": {
+    "api/index.php": {
+      "runtime": "php-8.2"
+    }
+  },
+  "routes": [
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}
