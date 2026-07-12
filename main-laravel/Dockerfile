@@ -21,6 +21,9 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-di
 RUN npm install
 RUN npm run build
 
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
 ENV APACHE_RUN_PORT 10000
 RUN sed -i 's/80/10000/' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
 EXPOSE 10000
