@@ -3,7 +3,9 @@ FROM php:8.2-fpm
 WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y \
-    git unzip zip libzip-dev libonig-dev libpng-dev libxml2-dev curl \
+    git unzip zip libzip-dev libonig-dev libpng-dev libxml2-dev curl ca-certificates gnupg2 \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
